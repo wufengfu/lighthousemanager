@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.lighthouse.mapper.CardChannelMapper">
+  <resultMap id="BaseResultMap" type="com.edu.lighthouse.pojo.CardChannel">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="aesen_code" jdbcType="VARCHAR" property="aesenCode" />
+    <result column="aesdn_code" jdbcType="VARCHAR" property="aesdnCode" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="last_udpate_time" jdbcType="TIMESTAMP" property="lastUdpateTime" />
+    <result column="last_udpate_user" jdbcType="VARCHAR" property="lastUdpateUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, channel_code, channel_name, password, token, aesen_code, aesdn_code, remark, 
+    create_time, creater, last_udpate_time, last_udpate_user
+  </sql>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='com.edu.lighthouse.mapper.SchoolMapper'>
+
+    <select id="listLocation" resultType="String">
+        select distinct(substring_index(location, '-', 1)) as location from school;
+    </select>
+
+    <select id="listType" resultType="String">
+        select distinct(substring_index(type, ' ', -1)) as type from school where type != '-';
+    </select>
+
+    <select id="listProperty" resultType="String">
+        select distinct(property) as property from school;
+    </select>
+
+    <select id="list" parameterType="com.edu.lighthouse.pojo.vo.SchoolBaseVo" resultType="com.edu.lighthouse.pojo.vo.SchoolBaseVo">
+        select id, name, type, subjection, property, undergraduate,
+               substring_index(location, ' ', -1) as location,
+               is211, is985, double_tops,school_badge
+        from school
+        <where>
+            <if test="location != '' and location != null"> location regexp '${location}'</if>
+            <if test="name != '' and name != null">and name like '%${name}%'</if>
+            <if test="type != '' and type != null">and type in ('${type}')</if>
+            <if test="undergraduate != '' and undergraduate != null">and undergraduate = #{undergraduate}</if>
+            <if test="property != '' and property != null">and property in ('${property}')</if>
+            <if test="is211 != '' and is211 != null">and is211 = #{is211}</if>
+            <if test="is985 != '' and is985 != null">and is985 = #{is985}</if>
+            <if test="doubleTops != '' and doubleTops != null">and double_tops = #{doubleTops}</if>
+        </where>
+        limit ${(page-1)*10}, 10
+    </select>
+
+    <select id="get" parameterType="int" resultType="com.edu.lighthouse.pojo.School">
+        select * from school where id=#{id}
+    </select>
+</mapper>

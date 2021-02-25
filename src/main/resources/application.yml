@@ -1,0 +1,12 @@
+info:
+  version: 1.0.0
+
+server:
+  port: 15453
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  profiles:
+    active: dev
+

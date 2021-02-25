@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- C:/Users/jun.li/.m2/repository C:/Documents and Settings/alan/.m2/repository/mysql/mysql-connector-java/5.1.9/mysql-connector-java-5.1.9.jar
+        C:/Users/zhiqiang.ma/.m2/repository/com/zhaogang/jdbc/ojdbc14/10.2.0.4.0/ojdbc14-10.2.0.4.0.jar -->
+    <properties resource="init/init.properties"/>
+    <context id="infoGuardian">
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper,tk.mybatis.mapper.common.MySqlMapper"/>
+            <!-- <property name="mappers" value="tk.mybatis.mapper.common.MySqlMapper"/> -->
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="true"/>
+            <!-- forceAnnotation 是否强制生成注解，默认 false，如果设置为 true，不管数据库名和字段名是否一致，都会生成注解（包含 @Table 和 @Column）。 -->
+            <property name="forceAnnotation" value="true"/>
+
+            <!--主键自增回写方法,默认值MYSQL,详细说明请看文档-->
+            <property name="IDENTITY" value="MYSQL"/>
+            <!-- beginningDelimiter 和 endingDelimiter 开始和结束分隔符，对于有关键字的情况下适用。-->
+            <!-- <property name="beginningDelimiter" value=""/&gt;&gt;<br/>&lt; &lt;property name="endingDelimiter" value=""/>-->
+            <!-- useMapperCommentGenerator 是否使用通用 Mapper 提供的注释工具，默认 true 使用，这样在生成代码时会包含字段的注释（目前只有 mysql 和 oracle 支持），设置 false 后会用默认的，或者你可以配置自己的注释插件。-->
+            <!-- <property name="useMapperCommentGenerator " value="true"/> -->
+            <!-- generateColumnConsts 在生成的 model中，增加字段名的常量，便于使用 Example 拼接查询条件的时候使用。-->
+            <property name="generateColumnConsts" value=""/>
+            <!-- lombok 增加 model 代码生成时，可以直接生成 lombok 的 @Getter@Setter@ToString@Accessors(chain = true) 四类注解， 使用者在插件配置项中增加 <property name="lombok" value="Getter,Setter,ToString,Accessors"/> 即可生成对应包含注解的 model 类。-->
+            <!-- <property name="lombok" value="Getter,Setter,ToString,Accessors"/>-->
+
+        </plugin>
+        <commentGenerator>
+            <!-- 这个元素用来去除指定生成的注释中是否包含生成的日期 false:表示保护 -->
+            <!-- 如果生成日期，会造成即使修改一个字段，整个实体类所有属性都会发生变化，不利于版本控制，所以设置为true -->
+            <property name="suppressDate" value="true" />
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${jdbc.driverClassName}"
+                        connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" />
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置 -->
+        <javaModelGenerator targetPackage="com.edu.lighthouse.pojo"
+                            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置 -->
+        <sqlMapGenerator targetPackage="."
+                         targetProject="./src/main/resources/orm">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.edu.lighthouse.mapper" implementationPackage="com.edu.lighthouse.mapper"  targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!-- 要生成哪些表 -->
+        <table tableName="card_account" domainObjectName="CardAccount" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
+        <table tableName="card_account_funds_change" domainObjectName="CardAccountFundsChange" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
+        <table tableName="card_bd_product" domainObjectName="CardBdProduct" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
+        <table tableName="card_channel" domainObjectName="CardChannel" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
+        <table tableName="card_main" domainObjectName="CardMain" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
+        <table tableName="card_rule" domainObjectName="CardRule" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
+
+    </context>
+</generatorConfiguration>

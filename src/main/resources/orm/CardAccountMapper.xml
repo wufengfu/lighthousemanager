@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.lighthouse.mapper.CardAccountMapper">
+  <resultMap id="BaseResultMap" type="com.edu.lighthouse.pojo.CardAccount">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="card_id" jdbcType="INTEGER" property="cardId" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="account_status" jdbcType="INTEGER" property="accountStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, card_id, balance, account_status, create_time
+  </sql>
+</mapper>

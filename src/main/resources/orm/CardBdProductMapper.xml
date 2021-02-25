@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.lighthouse.mapper.CardBdProductMapper">
+  <resultMap id="BaseResultMap" type="com.edu.lighthouse.pojo.CardBdProduct">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_type" jdbcType="INTEGER" property="productType" />
+    <result column="prodcut_desc" jdbcType="VARCHAR" property="prodcutDesc" />
+    <result column="product_status" jdbcType="INTEGER" property="productStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="last_update_user" jdbcType="VARCHAR" property="lastUpdateUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, product_type, prodcut_desc, product_status, create_time, creater, last_update_time, 
+    last_update_user
+  </sql>
+</mapper>

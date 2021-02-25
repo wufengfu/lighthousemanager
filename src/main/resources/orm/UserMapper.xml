@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='com.edu.lighthouse.mapper.UserMapper'>
+
+    <insert id="register" parameterType="com.edu.lighthouse.pojo.User">
+        insert ignore into
+            my_user(name, pass, create_time, update_time, card_no)
+             values(#{name}, #{pass}, now(), now(), #{cardNo})
+    </insert>
+
+    <select id="selectByName" parameterType="String" resultType="com.edu.lighthouse.pojo.vo.UserRegVo">
+        select id, name, pass, card_no from my_user
+        <where>
+            name=#{name}
+            and del_flag = 0
+        </where>
+    </select>
+</mapper>

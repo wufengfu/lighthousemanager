@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.lighthouse.mapper.CardInfoMapper">
+
+    <sql id="main_column_list">
+    main.id as id,
+    main.rule_id as ruleId,
+    main.channel_id as channelId,
+    main.rule_code as ruleCode,
+    main.card_code as cardCode,
+    main.card_password as cardPassword,
+    main.get_type as getType,
+    main.create_time as createTime,
+    main.use_status as useStatus,
+    main.active_time as activeTime,
+    main.use_time as useTime
+  </sql>
+  <select id="cardList" parameterType="com.edu.lighthouse.pojo.vo.CardBaseVo" resultType="com.edu.lighthouse.pojo.CardInfo">
+        select
+        <include refid="main_column_list"/>
+        from card_main main
+        inner join card_channel channel on channel.id = main.channel_id
+        inner join card_rule rule on rule.id = main.rule_id
+        inner join card_bd_product product on product.product_type = rule.product_type
+        inner join my_user `user` on `user`.id = main.user_id
+        where 1=1
+      <if test="cardCode != '' and cardCode != null">AND main.card_code = #{cardCode}</if>
+      <if test="userName != '' and userName != null">AND `user`.`name` =  #{userName}</if>
+      <if test="startTime != '' and startTime != null">AND main.create_time &gt;= #{startTime}</if>
+      <if test="endTime != '' and endTime != null">AND main.card_code &lt;= #{endTime}</if>
+  </select>
+</mapper>

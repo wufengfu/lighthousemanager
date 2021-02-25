@@ -1,0 +1,43 @@
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  mvc:
+    static-path-pattern: /file/**
+    resources:
+      static-locations: file:/home/dev/upload/web-customer/
+  cache:
+    type: caffeine
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: ENC(CljB7afyM55IUrBTCxMXajdcfG+pL8LAH6UgkxwHs4gqQe+uZ+Ie097CZlllzxNtCTVJn35+77T2Brn+rn//QqvoHoJY4//kopa1xGCgPp+UrLtXTVw/IiNFYCpvbo2PvABTDtf+o4fxPVaM73N0rdTREyE/pmSGkxJk/hDJ6q4=)
+    username: ENC(9X0agXOmvqKkVq4ODt5vipzO0d0WcWsPcoQF6NLPixS4rVQwBbdKRn1fSTSzbcI7)
+    password: ENC(r2SWJqtAoDtRCKAcbCsSnw+MwSj0B0f68WGEJb5d3uVjTPR907yKYunBg6fIDBTq)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initial-size: 5
+      min-idle: 5
+      remove-abandoned: true
+      remove-abandoned-timeout: 600000
+      maxActive: 200
+      maxWait: 60000
+      keepAlive: true
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 200
+      filters: stat,wall,slf4j
+      connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=1000
+      web-stat-filter:
+        enabled: true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapperLocations: classpath:orm/*.xml

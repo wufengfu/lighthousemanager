@@ -1,0 +1,54 @@
+
+### 注册
+POST {{host}}/api/v1/user/register
+Content-Type: application/json
+
+{
+  "name": "jinzc",
+  "pass": "jinzc",
+  "cardNo": "123456"
+}
+
+### 登录
+POST {{host}}/api/v1/user/login
+Content-Type: application/json
+
+{
+  "name": "jinzc",
+  "pass": "jinzc"
+}
+
+> {%
+    client.global.set("token", response.body.result.token);
+%}
+### 院校省份列表
+GET {{host}}/api/v1/school/listLocation
+Authorization: {{token}}
+
+### 院校性质列表
+GET {{host}}/api/v1/school/listProperty
+Authorization: {{token}}
+
+### 院校类型列表
+GET {{host}}/api/v1/school/listType
+Authorization: {{token}}
+
+### 院校列表
+GET {{host}}/api/v1/school/list?name=北京&location=&undergraduate=本科&type=综合&property=公办&page=1&is211=&is985=&doubleTops=
+Authorization: {{token}}
+
+### 专业大类统计
+GET {{host}}/api/v1/major/listLargeCount?undergraduate=
+
+
+### 专业base列表
+GET {{host}}/api/v1/major/listMajorBase?undergraduate=本科&majorName=医学
+
+
+### 院校详情
+GET {{host}}/api/v1/school/get?id=1
+Authorization: {{token}}
+
+### 院校详情
+GET {{host}}/api/v1/major/get?code=
+Authorization: {{token}}

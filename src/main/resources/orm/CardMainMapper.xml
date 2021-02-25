@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.lighthouse.mapper.CardMainMapper">
+  <resultMap id="BaseResultMap" type="com.edu.lighthouse.pojo.CardMain">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="rule_id" jdbcType="INTEGER" property="ruleId" />
+    <result column="channel_id" jdbcType="INTEGER" property="channelId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="rule_code" jdbcType="VARCHAR" property="ruleCode" />
+    <result column="card_code" jdbcType="VARCHAR" property="cardCode" />
+    <result column="card_password" jdbcType="VARCHAR" property="cardPassword" />
+    <result column="get_type" jdbcType="INTEGER" property="getType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="use_status" jdbcType="INTEGER" property="useStatus" />
+    <result column="active_time" jdbcType="TIMESTAMP" property="activeTime" />
+    <result column="use_time" jdbcType="TIMESTAMP" property="useTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, rule_id, channel_id, user_id, rule_code, card_code, card_password, get_type, 
+    create_time, use_status, active_time, use_time
+  </sql>
+</mapper>
