@@ -18,8 +18,8 @@ public class CardBdProduct {
     /**
      * 产品文字描述
      */
-    @Column(name = "prodcut_desc")
-    private String prodcutDesc;
+    @Column(name = "product_desc")
+    private String productDesc;
 
     /**
      * 产品状态表示：1-有效；2-无效（则对卡全部失效）
@@ -76,17 +76,17 @@ public class CardBdProduct {
      *
      * @return prodcut_desc - 产品文字描述
      */
-    public String getProdcutDesc() {
-        return prodcutDesc;
+    public String getProductDesc() {
+        return productDesc;
     }
 
     /**
      * 设置产品文字描述
      *
-     * @param prodcutDesc 产品文字描述
+     * @param productDesc 产品文字描述
      */
-    public void setProdcutDesc(String prodcutDesc) {
-        this.prodcutDesc = prodcutDesc == null ? null : prodcutDesc.trim();
+    public void setProductDesc(String productDesc) {
+        this.productDesc = productDesc == null ? null : productDesc.trim();
     }
 
     /**

@@ -2,20 +2,59 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edu.lighthouse.mapper.CardInfoMapper">
 
+    <resultMap id="cardInfoMap" type="com.edu.lighthouse.pojo.CardInfo">
+        <result column="id" property="id"/>
+        <result column="cardCode" property="cardCode"/>
+        <result column="ruleCode" property="ruleCode"/>
+        <result column="cardPassword" property="cardPassword"/>
+        <result column="getType" property="getType"/>
+        <result column="createTime" property="createTime"/>
+        <result column="useStatus" property="useStatus"/>
+        <result column="activeTime" property="activeTime"/>
+        <result column="useTime" property="useTime"/>
+
+        <result column="ruleTitle" property="cardRule.title"/>
+        <result column="ruleIcon" property="cardRule.icon"/>
+        <result column="ruleCode" property="cardRule.ruleCode"/>
+        <result column="ruleUseType" property="cardRule.useType"/>
+        <result column="amountRule" property="cardRule.amountRule"/>
+        <result column="ruleStatus" property="cardRule.status"/>
+        <result column="ruleCreateTime" property="cardRule.createTime"/>
+
+        <result column="productType" property="cardBdProduct.productType"/>
+        <result column="productDesc" property="cardBdProduct.productDesc"/>
+        <result column="productStatus" property="cardBdProduct.productStatus"/>
+
+        <result column="balance" property="cardAccount.balance"/>
+        <result column="accountStatus" property="cardAccount.accountStatus"/>
+
+        <result column="userName" property="user.name"/>
+        <result column="delFlag" property="user.delFlag"/>
+    </resultMap>
+    
     <sql id="main_column_list">
-    main.id as id,
-    main.rule_id as ruleId,
-    main.channel_id as channelId,
-    main.rule_code as ruleCode,
-    main.card_code as cardCode,
-    main.card_password as cardPassword,
-    main.get_type as getType,
-    main.create_time as createTime,
-    main.use_status as useStatus,
-    main.active_time as activeTime,
-    main.use_time as useTime
+        main.id as id,
+        main.rule_code as ruleCode,
+        main.card_code as cardCode,
+        main.card_password as cardPassword,
+        main.get_type as getType,
+        main.create_time as createTime,
+        main.use_status as useStatus,
+        main.active_time as activeTime,
+        main.use_time as useTime,
+        rule.title as ruleTitle,
+        rule.icon as ruleIcon,
+        rule.rule_code as ruleCode,
+        rule.use_type as ruleUseType,
+        rule.amount_rule as amountRule,
+        rule.status as ruleStatus,
+        rule.create_time as ruleCreateTime,
+        product.product_type as productType,
+        product.product_desc as productDesc,
+        account.balance as balance,
+        account.account_status as accountStatus
   </sql>
-  <select id="cardList" parameterType="com.edu.lighthouse.pojo.vo.CardBaseVo" resultType="com.edu.lighthouse.pojo.CardInfo">
+  <select id="cardList" parameterType="com.edu.lighthouse.pojo.vo.CardBaseVo" resultMap="cardInfoMap">
         select
         <include refid="main_column_list"/>
         from card_main main
@@ -23,6 +62,7 @@
         inner join card_rule rule on rule.id = main.rule_id
         inner join card_bd_product product on product.product_type = rule.product_type
         inner join my_user `user` on `user`.id = main.user_id
+        inner join card_account account on account.card_id = main.id
         where 1=1
       <if test="cardCode != '' and cardCode != null">AND main.card_code = #{cardCode}</if>
       <if test="userName != '' and userName != null">AND `user`.`name` =  #{userName}</if>
