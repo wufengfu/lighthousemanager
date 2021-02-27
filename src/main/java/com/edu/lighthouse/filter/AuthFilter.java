@@ -35,6 +35,10 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) sRequest;
         HttpServletResponse response = (HttpServletResponse) sResponse;
         String uri = request.getServletPath();
+        if(request.getMethod().equals("OPTIONS")){
+            filterChain.doFilter(sRequest, sResponse);
+            return;
+        }
         boolean isValid = Arrays.stream(filterUri)
                 .anyMatch(item -> uri.toLowerCase()
                         .matches(item.toLowerCase().replace("*", ".*")));
