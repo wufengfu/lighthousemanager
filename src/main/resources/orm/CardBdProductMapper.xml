@@ -7,8 +7,9 @@
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="product_type" jdbcType="INTEGER" property="productType" />
-    <result column="prodcut_desc" jdbcType="VARCHAR" property="prodcutDesc" />
+    <result column="product_desc" jdbcType="VARCHAR" property="productDesc" />
     <result column="product_status" jdbcType="INTEGER" property="productStatus" />
+    <result column="stand_price" jdbcType="DECIMAL" property="standPrice" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="creater" jdbcType="VARCHAR" property="creater" />
     <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
@@ -18,7 +19,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, product_type, prodcut_desc, product_status, create_time, creater, last_update_time, 
-    last_update_user
+    id, product_type, product_desc, product_status, stand_price, create_time, creater, 
+    last_update_time, last_update_user
   </sql>
 </mapper>

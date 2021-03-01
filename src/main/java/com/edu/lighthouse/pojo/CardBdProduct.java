@@ -1,5 +1,6 @@
 package com.edu.lighthouse.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -26,6 +27,12 @@ public class CardBdProduct {
      */
     @Column(name = "product_status")
     private Integer productStatus;
+
+    /**
+     * 标准价
+     */
+    @Column(name = "stand_price")
+    private BigDecimal standPrice;
 
     @Column(name = "create_time")
     private Date createTime;
@@ -74,7 +81,7 @@ public class CardBdProduct {
     /**
      * 获取产品文字描述
      *
-     * @return prodcut_desc - 产品文字描述
+     * @return product_desc - 产品文字描述
      */
     public String getProductDesc() {
         return productDesc;
@@ -105,6 +112,24 @@ public class CardBdProduct {
      */
     public void setProductStatus(Integer productStatus) {
         this.productStatus = productStatus;
+    }
+
+    /**
+     * 获取标准价
+     *
+     * @return stand_price - 标准价
+     */
+    public BigDecimal getStandPrice() {
+        return standPrice;
+    }
+
+    /**
+     * 设置标准价
+     *
+     * @param standPrice 标准价
+     */
+    public void setStandPrice(BigDecimal standPrice) {
+        this.standPrice = standPrice;
     }
 
     /**

@@ -13,6 +13,7 @@
     <result column="card_code" jdbcType="VARCHAR" property="cardCode" />
     <result column="card_password" jdbcType="VARCHAR" property="cardPassword" />
     <result column="get_type" jdbcType="INTEGER" property="getType" />
+    <result column="fact_price" jdbcType="DECIMAL" property="factPrice" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="use_status" jdbcType="INTEGER" property="useStatus" />
     <result column="active_time" jdbcType="TIMESTAMP" property="activeTime" />
@@ -23,6 +24,6 @@
       WARNING - @mbg.generated
     -->
     id, rule_id, channel_id, user_id, rule_code, card_code, card_password, get_type, 
-    create_time, use_status, active_time, use_time
+    fact_price, create_time, use_status, active_time, use_time
   </sql>
 </mapper>

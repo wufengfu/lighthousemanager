@@ -1,5 +1,6 @@
 package com.edu.lighthouse.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -28,7 +29,7 @@ public class CardMain {
     private String userId;
 
     /**
-     * 开卡渠道码
+     * 开卡渠道码（分销推广扩展码）
      */
     @Column(name = "rule_code")
     private String ruleCode;
@@ -50,6 +51,12 @@ public class CardMain {
      */
     @Column(name = "get_type")
     private Integer getType;
+
+    /**
+     * 实际成交价格
+     */
+    @Column(name = "fact_price")
+    private BigDecimal factPrice;
 
     /**
      * 创建时间
@@ -144,18 +151,18 @@ public class CardMain {
     }
 
     /**
-     * 获取开卡渠道码
+     * 获取开卡渠道码（分销推广扩展码）
      *
-     * @return rule_code - 开卡渠道码
+     * @return rule_code - 开卡渠道码（分销推广扩展码）
      */
     public String getRuleCode() {
         return ruleCode;
     }
 
     /**
-     * 设置开卡渠道码
+     * 设置开卡渠道码（分销推广扩展码）
      *
-     * @param ruleCode 开卡渠道码
+     * @param ruleCode 开卡渠道码（分销推广扩展码）
      */
     public void setRuleCode(String ruleCode) {
         this.ruleCode = ruleCode == null ? null : ruleCode.trim();
@@ -213,6 +220,24 @@ public class CardMain {
      */
     public void setGetType(Integer getType) {
         this.getType = getType;
+    }
+
+    /**
+     * 获取实际成交价格
+     *
+     * @return fact_price - 实际成交价格
+     */
+    public BigDecimal getFactPrice() {
+        return factPrice;
+    }
+
+    /**
+     * 设置实际成交价格
+     *
+     * @param factPrice 实际成交价格
+     */
+    public void setFactPrice(BigDecimal factPrice) {
+        this.factPrice = factPrice;
     }
 
     /**

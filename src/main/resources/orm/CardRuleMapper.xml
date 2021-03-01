@@ -8,23 +8,14 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="channel_id" jdbcType="INTEGER" property="channelId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
-    <result column="rule_code" jdbcType="VARCHAR" property="ruleCode" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="publish_count" jdbcType="INTEGER" property="publishCount" />
-    <result column="use_count" jdbcType="INTEGER" property="useCount" />
-    <result column="receive_count" jdbcType="INTEGER" property="receiveCount" />
     <result column="use_type" jdbcType="INTEGER" property="useType" />
     <result column="product_type" jdbcType="INTEGER" property="productType" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="sale_price" jdbcType="DECIMAL" property="salePrice" />
     <result column="pre_limit" jdbcType="INTEGER" property="preLimit" />
-    <result column="amount_rule" jdbcType="DECIMAL" property="amountRule" />
-    <result column="valid_type" jdbcType="INTEGER" property="validType" />
-    <result column="valid_start_time" jdbcType="TIMESTAMP" property="validStartTime" />
-    <result column="valid_end_time" jdbcType="TIMESTAMP" property="validEndTime" />
-    <result column="valid_days" jdbcType="INTEGER" property="validDays" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="cerater" jdbcType="VARCHAR" property="cerater" />
     <result column="last_udpate_time" jdbcType="TIMESTAMP" property="lastUdpateTime" />
@@ -34,9 +25,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, channel_id, title, icon, rule_code, start_time, end_time, publish_count, use_count, 
-    receive_count, use_type, product_type, pre_limit, amount_rule, valid_type, valid_start_time, 
-    valid_end_time, valid_days, status, remark, create_time, cerater, last_udpate_time, 
-    last_update_user
+    id, channel_id, title, detail, icon, use_type, product_type, discount, sale_price, 
+    pre_limit, status, create_time, cerater, last_udpate_time, last_update_user
   </sql>
 </mapper>

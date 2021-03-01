@@ -15,9 +15,7 @@
 
         <result column="ruleTitle" property="cardRule.title"/>
         <result column="ruleIcon" property="cardRule.icon"/>
-        <result column="ruleCode" property="cardRule.ruleCode"/>
         <result column="ruleUseType" property="cardRule.useType"/>
-        <result column="amountRule" property="cardRule.amountRule"/>
         <result column="ruleStatus" property="cardRule.status"/>
         <result column="ruleCreateTime" property="cardRule.createTime"/>
 
@@ -44,9 +42,7 @@
         main.use_time as useTime,
         rule.title as ruleTitle,
         rule.icon as ruleIcon,
-        rule.rule_code as ruleCode,
         rule.use_type as ruleUseType,
-        rule.amount_rule as amountRule,
         rule.status as ruleStatus,
         rule.create_time as ruleCreateTime,
         product.product_type as productType,
