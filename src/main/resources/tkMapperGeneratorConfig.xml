@@ -59,12 +59,13 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- 要生成哪些表 -->
-        <table tableName="card_account" domainObjectName="CardAccount" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
-        <table tableName="card_account_funds_change" domainObjectName="CardAccountFundsChange" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
-        <table tableName="card_bd_product" domainObjectName="CardBdProduct" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
-        <table tableName="card_channel" domainObjectName="CardChannel" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
-        <table tableName="card_main" domainObjectName="CardMain" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
-        <table tableName="card_rule" domainObjectName="CardRule" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
+<!--        <table tableName="card_account" domainObjectName="CardAccount" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+<!--        <table tableName="card_account_funds_change" domainObjectName="CardAccountFundsChange" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+<!--        <table tableName="card_bd_product" domainObjectName="CardBdProduct" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+<!--        <table tableName="card_channel" domainObjectName="CardChannel" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+<!--        <table tableName="card_main" domainObjectName="CardMain" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+<!--        <table tableName="card_rule" domainObjectName="CardRule" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+        <table tableName="manager_user" domainObjectName="ManagerUser" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>
 
     </context>
 </generatorConfiguration>

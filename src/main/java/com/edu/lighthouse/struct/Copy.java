@@ -1,12 +1,13 @@
-package com.jtravel.common.util.struct;
+package com.edu.lighthouse.struct;
+
+import net.sf.cglib.beans.BeanCopier;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.stream.Collectors;
-import net.sf.cglib.beans.BeanCopier;
 
 /**
- * @author ziy
+ * @author wufengfu
  */
 public class Copy {
 

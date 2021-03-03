@@ -2,8 +2,10 @@ package com.edu.lighthouse.web;
 
 import com.edu.lighthouse.conf.Result;
 import com.edu.lighthouse.pojo.CardInfo;
+import com.edu.lighthouse.pojo.CardMain;
 import com.edu.lighthouse.pojo.Major;
 import com.edu.lighthouse.pojo.vo.CardBaseVo;
+import com.edu.lighthouse.pojo.vo.CardInfoVo;
 import com.edu.lighthouse.pojo.vo.MajorBaseVo;
 import com.edu.lighthouse.pojo.vo.MajorCountVo;
 import com.edu.lighthouse.service.CardService;
@@ -14,10 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,6 +42,12 @@ public class CardController {
         log.info("查询卡列表, cardBaseVo={}", cardBaseVo);
         List<CardInfo> list = cardService.listCard(cardBaseVo);
         return Result.success(list);
+    }
+    @PostMapping("/add")
+    public Result addCard(CardInfoVo cardInfo) {
+        log.info("查询卡列表, cardBaseVo={}", cardInfo);
+        CardMain cardMain = cardService.addCard(cardInfo);
+        return Result.success(cardMain);
     }
 
 }

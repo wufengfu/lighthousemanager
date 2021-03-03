@@ -1,8 +1,10 @@
 package com.edu.lighthouse.mapper;
 
 import com.edu.lighthouse.pojo.CardInfo;
+import com.edu.lighthouse.pojo.CardMain;
 import com.edu.lighthouse.pojo.User;
 import com.edu.lighthouse.pojo.vo.CardBaseVo;
+import com.edu.lighthouse.pojo.vo.CardInfoVo;
 import com.edu.lighthouse.pojo.vo.UserRegVo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -20,4 +22,11 @@ public interface CardInfoMapper {
      * @return
      */
     List<CardInfo> cardList(CardBaseVo cardBaseVo);
+
+    /**
+     * 插入卡片信息
+     * @param cardMain 卡片信息
+     * @return
+     */
+    int insertCard(CardMain cardMain);
 }

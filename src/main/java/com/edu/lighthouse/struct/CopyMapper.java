@@ -1,8 +1,9 @@
-package com.jtravel.common.util.struct;
+package com.edu.lighthouse.struct;
 
-import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 /**
  * @author ziy

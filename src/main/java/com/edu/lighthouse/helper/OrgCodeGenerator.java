@@ -1,7 +1,6 @@
-package com.fetx.ticket.utils;
+package com.edu.lighthouse.helper;
 
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;

@@ -50,7 +50,11 @@
         account.balance as balance,
         account.account_status as accountStatus
   </sql>
-  <select id="cardList" parameterType="com.edu.lighthouse.pojo.vo.CardBaseVo" resultMap="cardInfoMap">
+    <insert id="insertCard" parameterType="com.edu.lighthouse.pojo.CardMain">
+        insert ignore into card_main(rule_id,channel_id,user_id,rule_code,card_code,card_password,get_type,fact_price,create_time,use_status,active_time)
+        vlaues (rule_id,channel_id,user_id,rule_code,card_code,card_password,get_type,fact_price,now(),1,now())
+    </insert>
+    <select id="cardList" parameterType="com.edu.lighthouse.pojo.vo.CardBaseVo" resultMap="cardInfoMap">
         select
         <include refid="main_column_list"/>
         from card_main main
