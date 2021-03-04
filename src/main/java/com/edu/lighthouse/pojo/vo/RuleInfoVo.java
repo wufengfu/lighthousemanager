@@ -8,13 +8,10 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class CardInfoVo {
+public class RuleInfoVo {
 
     private Integer ruleId;
     private Integer channelId;
-    private Integer userId;
-    private String ruleCode;
-    private Integer getType;
-    private Double factPrice;
+    private Integer ruleStatus = 1;
 
 }

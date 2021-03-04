@@ -1,11 +1,7 @@
 package com.edu.lighthouse.mapper;
 
-import com.edu.lighthouse.pojo.CardInfo;
-import com.edu.lighthouse.pojo.CardMain;
-import com.edu.lighthouse.pojo.User;
-import com.edu.lighthouse.pojo.vo.CardBaseVo;
-import com.edu.lighthouse.pojo.vo.CardInfoVo;
-import com.edu.lighthouse.pojo.vo.UserRegVo;
+import com.edu.lighthouse.pojo.RuleInfo;
+import com.edu.lighthouse.pojo.vo.RuleInfoVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,19 +10,12 @@ import java.util.List;
  * @author wufengfu
  */
 @Mapper
-public interface CardInfoMapper {
+public interface RuleInfoMapper {
 
     /**
-     * 获取符合条件的卡列表信息
-     * @param cardBaseVo
+     * 获取所有在售卡规则信息
      * @return
      */
-    List<CardInfo> cardList(CardBaseVo cardBaseVo);
+    List<RuleInfo> ruleList(RuleInfoVo ruleInfoVo);
 
-    /**
-     * 插入卡片信息
-     * @param cardMain 卡片信息
-     * @return
-     */
-    int insertCard(CardMain cardMain);
 }

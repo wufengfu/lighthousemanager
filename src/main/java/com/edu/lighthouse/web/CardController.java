@@ -45,7 +45,7 @@ public class CardController {
     }
     @PostMapping("/add")
     public Result addCard(CardInfoVo cardInfo) {
-        log.info("查询卡列表, cardBaseVo={}", cardInfo);
+        log.info("新增卡信息, cardBaseVo={}", cardInfo);
         CardMain cardMain = cardService.addCard(cardInfo);
         return Result.success(cardMain);
     }

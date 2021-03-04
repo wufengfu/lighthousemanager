@@ -1,72 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.edu.lighthouse.mapper.CardInfoMapper">
+<mapper namespace="com.edu.lighthouse.mapper.RuleInfoMapper">
 
-    <resultMap id="cardInfoMap" type="com.edu.lighthouse.pojo.CardInfo">
-        <result column="id" property="id"/>
-        <result column="cardCode" property="cardCode"/>
-        <result column="ruleCode" property="ruleCode"/>
-        <result column="cardPassword" property="cardPassword"/>
-        <result column="getType" property="getType"/>
-        <result column="createTime" property="createTime"/>
-        <result column="useStatus" property="useStatus"/>
-        <result column="activeTime" property="activeTime"/>
-        <result column="useTime" property="useTime"/>
+    <resultMap id="ruleInfoMap" type="com.edu.lighthouse.pojo.RuleInfo">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="channel_id" jdbcType="INTEGER" property="channelId" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="detail" jdbcType="VARCHAR" property="detail" />
+        <result column="icon" jdbcType="VARCHAR" property="icon" />
+        <result column="use_type" jdbcType="INTEGER" property="useType" />
+        <result column="discount" jdbcType="DECIMAL" property="discount" />
+        <result column="sale_price" jdbcType="DECIMAL" property="salePrice" />
+        <result column="pre_limit" jdbcType="INTEGER" property="preLimit" />
+        <result column="status" jdbcType="INTEGER" property="status" />
 
-        <result column="ruleTitle" property="cardRule.title"/>
-        <result column="ruleIcon" property="cardRule.icon"/>
-        <result column="ruleUseType" property="cardRule.useType"/>
-        <result column="ruleStatus" property="cardRule.status"/>
-        <result column="ruleCreateTime" property="cardRule.createTime"/>
+        <result column="product_type" jdbcType="INTEGER" property="product.productType" />
+        <result column="product_status" jdbcType="INTEGER" property="product.productStatus" />
+        <result column="product_desc" jdbcType="VARCHAR" property="product.productDesc" />
+        <result column="stand_price" jdbcType="DECIMAL" property="product.standPrice" />
 
-        <result column="productType" property="cardBdProduct.productType"/>
-        <result column="productDesc" property="cardBdProduct.productDesc"/>
-        <result column="productStatus" property="cardBdProduct.productStatus"/>
 
-        <result column="balance" property="cardAccount.balance"/>
-        <result column="accountStatus" property="cardAccount.accountStatus"/>
-
-        <result column="userName" property="user.name"/>
-        <result column="delFlag" property="user.delFlag"/>
     </resultMap>
     
-    <sql id="main_column_list">
-        main.id as id,
-        main.rule_code as ruleCode,
-        main.card_code as cardCode,
-        main.card_password as cardPassword,
-        main.get_type as getType,
-        main.create_time as createTime,
-        main.use_status as useStatus,
-        main.active_time as activeTime,
-        main.use_time as useTime,
-        rule.title as ruleTitle,
-        rule.icon as ruleIcon,
-        rule.use_type as ruleUseType,
-        rule.status as ruleStatus,
-        rule.create_time as ruleCreateTime,
-        product.product_type as productType,
-        product.product_desc as productDesc,
-        account.balance as balance,
-        account.account_status as accountStatus
+    <sql id="rule_column_list">
+        rule.id as id,
+        rule.channel_id as channel_id,
+        rule.title as title,
+        rule.detail as detail,
+        rule.icon as icon,
+        rule.use_type as use_type,
+        rule.discount as discount,
+        rule.sale_price as sale_price,
+        rule.pre_limit as pre_limit,
+        rule.status as status,
+        rule.create_time as create_time,
+        rule.product_type as product_type,
+        pro.product_desc as product_desc,
+        pro.product_status as product_status,
+        pro.stand_price as stand_price
+
   </sql>
-    <insert id="insertCard" parameterType="com.edu.lighthouse.pojo.CardMain">
-        insert ignore into card_main(rule_id,channel_id,user_id,rule_code,card_code,card_password,get_type,fact_price,create_time,use_status,active_time)
-        vlaues (rule_id,channel_id,user_id,rule_code,card_code,card_password,get_type,fact_price,now(),1,now())
-    </insert>
-    <select id="cardList" parameterType="com.edu.lighthouse.pojo.vo.CardBaseVo" resultMap="cardInfoMap">
+    <select id="ruleList" parameterType="com.edu.lighthouse.pojo.vo.RuleInfoVo" resultMap="ruleInfoMap">
         select
-        <include refid="main_column_list"/>
-        from card_main main
-        inner join card_channel channel on channel.id = main.channel_id
-        inner join card_rule rule on rule.id = main.rule_id
-        inner join card_bd_product product on product.product_type = rule.product_type
-        inner join my_user `user` on `user`.id = main.user_id
-        inner join card_account account on account.card_id = main.id
+        <include refid="rule_column_list"/>
+        from card_rule rule
+        inner join card_bd_product pro on rule.product_type = pro.product_type
         where 1=1
-      <if test="cardCode != '' and cardCode != null">AND main.card_code = #{cardCode}</if>
-      <if test="userName != '' and userName != null">AND `user`.`name` =  #{userName}</if>
-      <if test="startTime != '' and startTime != null">AND main.create_time &gt;= #{startTime}</if>
-      <if test="endTime != '' and endTime != null">AND main.card_code &lt;= #{endTime}</if>
+      <if test="ruleId != '' and ruleId != null">AND rule.id = #{ruleId}</if>
+      <if test="channelId != '' and channelId != null">AND rule.channel_id =  #{channelId}</if>
+      <if test="ruleStatus != '' and ruleStatus != null">AND rule.status = #{ruleStatus}</if>
   </select>
 </mapper>

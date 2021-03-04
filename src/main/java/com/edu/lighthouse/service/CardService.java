@@ -51,6 +51,7 @@ public class CardService {
         if (row <= 0) {
             return null;
         }
+        cardMain.setCardPassword(cardPass);
         return cardMain;
     }
 
