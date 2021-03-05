@@ -11,18 +11,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 /**
  * @author jinzc
  */
 @RestController
-@RequestMapping("/api/v1/manager")
+@RequestMapping("/api/v1/user")
 public class ManagerController {
 
     @Autowired
@@ -34,12 +32,9 @@ public class ManagerController {
     @PostMapping("/register")
     public Result register(@RequestBody ManagerUser user) {
         log.info("用户注册, managerUser={}", user.toString());
-        int row = managerService.register(user);
-        if (row <= 0) {
-            return Result.fail();
-        }
-        log.info("注册成功");
-        return Result.success();
+        Result result =  managerService.register(user);
+        log.info("注册成功,result = {}",result.toString());
+        return result;
     }
 
     @Validated
@@ -49,6 +44,23 @@ public class ManagerController {
         ManagerUserRegVo userRegVo = managerService.login(user.getLoginName(), user.getLoginPass());
         if (Objects.isNull(userRegVo)) {
             return Result.noAuth("用户名或密码有误");
+        }
+        log.info("登录成功");
+        return Result.success(userRegVo);
+    }
+    @Validated
+    @GetMapping("/info")
+    public Result info(HttpServletRequest request) {
+        String tokenKey = "Authorization";
+        String token = request.getHeader(tokenKey);
+        log.info("用户信息, token={}", token);
+        ManagerUserRegVo userRegVo = managerService.info(token);
+        userRegVo.setRoles(new String[]{"admin"});
+        userRegVo.setAvatar("");
+        userRegVo.setIntroduction("");
+        userRegVo.setName(userRegVo.getLoginName());
+        if (Objects.isNull(userRegVo)) {
+            return Result.noAuth("会话已超时，请重新登陆！");
         }
         log.info("登录成功");
         return Result.success(userRegVo);

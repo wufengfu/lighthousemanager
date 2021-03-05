@@ -27,5 +27,13 @@ public class ManagerUserRegVo {
 
     private String token;
 
+    private String[] roles;
+
+    private String avatar;
+
+    private String introduction;
+
+    private String name;
+
 
 }

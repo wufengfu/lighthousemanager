@@ -16,7 +16,7 @@ import java.util.Objects;
  * @author jinzc
  */
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1")
 public class UserController {
 
     @Autowired

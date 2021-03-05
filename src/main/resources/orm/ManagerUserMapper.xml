@@ -19,11 +19,19 @@
   </sql>
     <insert id="register" parameterType="com.edu.lighthouse.pojo.ManagerUser">
         insert ignore into
-            manager_user(login_name, login_pass, create_time, update_time)
-             values(#{loginName}, #{loginPass}, now(), now())
+            manager_user(login_name, login_pass, create_time)
+             values(#{loginName}, #{loginPass}, now())
     </insert>
   <select id="selectByName" resultType="com.edu.lighthouse.pojo.vo.ManagerUserRegVo">
-        select id,login_name,login_pass,create_time,del_flag from manager_user
+        select
+        id,login_name as loginName,login_pass as loginPass,create_time as createTime,del_flag as delFlag
+        from manager_user
         where login_name = #{loginName}
   </select>
+    <select id="selectById" resultType="com.edu.lighthouse.pojo.vo.ManagerUserRegVo">
+        select
+        id,login_name as loginName,login_pass as loginPass,create_time as createTime,del_flag as delFlag
+        from manager_user
+        where id = #{userId}
+    </select>
 </mapper>

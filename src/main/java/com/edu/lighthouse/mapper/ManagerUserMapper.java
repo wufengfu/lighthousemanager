@@ -23,4 +23,6 @@ public interface ManagerUserMapper extends Mapper<ManagerUser>, MySqlMapper<Mana
      * @return
      */
     ManagerUserRegVo selectByName(String loginName);
+
+    ManagerUserRegVo selectById(Integer userId);
 }
