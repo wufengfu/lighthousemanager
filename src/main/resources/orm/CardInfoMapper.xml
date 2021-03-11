@@ -48,11 +48,20 @@
         product.product_type as productType,
         product.product_desc as productDesc,
         account.balance as balance,
-        account.account_status as accountStatus
+        account.account_status as accountStatus,
+        user.name as userName
   </sql>
     <insert id="insertCard" parameterType="com.edu.lighthouse.pojo.CardMain">
         insert ignore into card_main(rule_id,channel_id,user_id,rule_code,card_code,card_password,get_type,fact_price,create_time,use_status,active_time)
-        vlaues (rule_id,channel_id,user_id,rule_code,card_code,card_password,get_type,fact_price,now(),1,now())
+        values
+        (ruleId,channelId,userId,ruleCode,cardCode,cardPassword,getType,factPrice,now(),1,now())
+    </insert>
+    <insert id="insertCardBatch">
+        insert ignore into card_main(rule_id,channel_id,user_id,rule_code,card_code,card_password,get_type,fact_price,create_time,use_status,active_time)
+        values 
+        <foreach collection="cardMainList" item="cardMain" index="index" separator=",">
+        (cardMain.ruleId,cardMain.channelId,cardMain.userId,cardMain.ruleCode,cardMain.cardCode,cardMain.cardPassword,cardMain.getType,cardMain.factPrice,now(),1,now())
+        </foreach>
     </insert>
     <select id="cardList" parameterType="com.edu.lighthouse.pojo.vo.CardBaseVo" resultMap="cardInfoMap">
         select

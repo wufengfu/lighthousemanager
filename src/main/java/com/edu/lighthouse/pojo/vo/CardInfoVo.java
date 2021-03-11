@@ -16,5 +16,6 @@ public class CardInfoVo {
     private String ruleCode;
     private Integer getType;
     private Double factPrice;
+    private Integer count;
 
 }

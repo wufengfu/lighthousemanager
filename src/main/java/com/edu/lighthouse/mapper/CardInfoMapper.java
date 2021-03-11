@@ -29,4 +29,10 @@ public interface CardInfoMapper {
      * @return
      */
     int insertCard(CardMain cardMain);
+    /**
+     * 批量插入卡片信息
+     * @param cardMainList 卡片信息
+     * @return
+     */
+    int insertCardBatch(List<CardMain> cardMainList);
 }

@@ -49,5 +49,14 @@ public class CardController {
         CardMain cardMain = cardService.addCard(cardInfo);
         return Result.success(cardMain);
     }
+    @PostMapping("/addBatch")
+    public Result addCardBatch(CardInfoVo cardInfo) {
+        log.info("新增卡信息, cardBaseVo={}", cardInfo);
+        int rows = cardService.addCardBatch(cardInfo);
+        if(rows <= 0){
+            return Result.error("新增卡失败，请稍后重试！");
+        }
+        return Result.success("新增成功！");
+    }
 
 }

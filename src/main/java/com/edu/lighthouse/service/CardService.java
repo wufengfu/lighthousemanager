@@ -16,6 +16,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -44,7 +45,7 @@ public class CardService {
         CardMain cardMain = Copy.struct(cardInfoVo,CardMain.class);
         //other operate
         String cardCode = OrgCodeGenerator.generateMemberCard();
-        String cardPass = OrgCodeGenerator.generateDjq();
+        String cardPass = "123456";
         cardMain.setCardCode(cardCode);
         cardMain.setCardPassword(Encryption.hash(cardPass));
         int row = cardInfoMapper.insertCard(cardMain);
@@ -53,6 +54,22 @@ public class CardService {
         }
         cardMain.setCardPassword(cardPass);
         return cardMain;
+    }
+
+    public int addCardBatch(CardInfoVo cardInfoVo){
+
+        List<CardMain> cardMainList = new ArrayList<>();
+        for(int i = 0; i < cardInfoVo.getCount();i++){
+            CardMain cardMain = Copy.struct(cardInfoVo,CardMain.class);
+            //other operate
+            String cardCode = OrgCodeGenerator.generateMemberCard();
+            String cardPass = "123456";
+            cardMain.setCardCode(cardCode);
+            cardMain.setCardPassword(Encryption.hash(cardPass));
+            cardMainList.add(cardMain);
+        }
+        int row = cardInfoMapper.insertCardBatch(cardMainList);
+        return row;
     }
 
 }
